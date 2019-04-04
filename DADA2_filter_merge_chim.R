@@ -20,9 +20,9 @@ sessionInfo()
 #
 ###############################################################################################
 
-batchname <- "Batch3A_Lane1"
-demuxDir <- "/sc/orga/projects/MECONIUM/Batch3/preprocessing/Batch3A_Lane1"
-mainDir <- "/sc/orga/projects/MECONIUM/Batch3/dada2/stringent/Batch3A_Lane1"
+batchname <- "Batch3B_Lane2"
+demuxDir <- "/sc/orga/projects/MECONIUM/Batch3/preprocessing/Batch3B_Lane2"
+mainDir <- "/sc/orga/projects/MECONIUM/Batch3/dada2/workflow/Batch3B_Lane2"
 
 
 
@@ -45,7 +45,7 @@ filtRs <- file.path(mainDir, "filtered", paste0(sample.names, "_R_filt.fastq.gz"
 
 # Filtering
 out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs,
-                     maxN=0, maxEE=2, truncQ=2, rm.phix=TRUE, 
+                     maxN=0, maxEE=c(2,4), truncQ=2, rm.phix=TRUE, 
                      compress=TRUE, multithread=FALSE) 
 
 head(out)
@@ -94,8 +94,8 @@ saveRDS(seqtab_nochim, paste0(batchname, "_seqtab_nochim.rds"))
 
 # Track reads through the pipeline
 getN <- function(x) sum(getUniques(x))
-track <- cbind(out, sapply(mergers, getN))
-colnames(track) <- c("input", "filtered", "mergers")
+track <- cbind(out, sapply(mergers, getN), rowSums(seqtab.nochim))
+colnames(track) <- c("input", "filtered", "mergers", "nonchim")
 rownames(track) <- sample.names
 head(track)
 write.table(track, paste0(batchname, "_track.txt"), sep="\t")
