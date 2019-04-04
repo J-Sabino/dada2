@@ -94,7 +94,7 @@ saveRDS(seqtab_nochim, paste0(batchname, "_seqtab_nochim.rds"))
 
 # Track reads through the pipeline
 getN <- function(x) sum(getUniques(x))
-track <- cbind(out, sapply(mergers, getN), rowSums(seqtab.nochim))
+track <- cbind(out, sapply(mergers, getN), rowSums(seqtab_nochim))
 colnames(track) <- c("input", "filtered", "mergers", "nonchim")
 rownames(track) <- sample.names
 head(track)
