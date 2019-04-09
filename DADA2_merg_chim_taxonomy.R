@@ -39,7 +39,7 @@ namesB3BL1_short <- gsub("_3B_L1_FR", "", namesB3BL1)
 seqtabB3BL1_2 <- seqtabB3BL1
 rownames(seqtabB3BL1_2) <- namesB3BL1_short
 
-seqtabB3BL2 <- readRDS("~/stringent/Batch3B_Lane2/Batch3B_Lane2_seqtab.rds")
+seqtabB3BL2 <- readRDS("~/dada2/stringent/Batch3B_Lane2/Batch3B_Lane2_seqtab.rds")
 namesB3BL2 <- rownames(seqtabB3BL2)
 namesB3BL2_short <- gsub("_3B_L2_FR", "", namesB3BL2)
 seqtabB3BL2_2 <- seqtabB3BL2
