@@ -21,8 +21,8 @@ sessionInfo()
 ###############################################################################################
 
 batchname <- "Batch3B_Lane2"
-demuxDir <- "/sc/orga/projects/MECONIUM/Batch3/preprocessing/Batch3B_Lane2"
-mainDir <- "/sc/orga/projects/MECONIUM/Batch3/dada2/quality_profile"
+demuxDir <- "~/preprocessing/Batch3B_Lane2"
+mainDir <- "~/dada2/quality_profile"
 
 
 ###############################################################################################
